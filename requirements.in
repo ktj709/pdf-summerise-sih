@@ -11,3 +11,4 @@ reportlab
 streamlit
 tqdm
 uvicorn
+PyMuPDF

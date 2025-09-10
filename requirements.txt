@@ -149,6 +149,8 @@ pydot==4.0.1
     # via
     #   nipype
     #   prov
+pymupdf==1.26.4
+    # via -r requirements.in
 pyparsing==3.2.3
     # via
     #   httplib2
