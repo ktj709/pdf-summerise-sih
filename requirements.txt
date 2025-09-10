@@ -32,6 +32,7 @@ click==8.2.1
     # via
     #   nipype
     #   streamlit
+    #   uvicorn
 colorama==0.4.6
     # via
     #   click
@@ -54,6 +55,8 @@ gitdb==4.0.12
     # via gitpython
 gitpython==3.1.45
     # via streamlit
+h11==0.16.0
+    # via uvicorn
 httplib2==0.30.2
     # via fitz
 idna==3.10
@@ -220,11 +223,14 @@ typing-extensions==4.15.0
     #   starlette
     #   streamlit
     #   typing-inspection
+    #   uvicorn
 typing-inspection==0.4.1
     # via pydantic
 tzdata==2025.2
     # via pandas
 urllib3==2.5.0
     # via requests
+uvicorn==0.35.0
+    # via -r requirements.in
 watchdog==6.0.0
     # via streamlit

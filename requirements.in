@@ -10,3 +10,4 @@ python-dotenv
 reportlab
 streamlit
 tqdm
+uvicorn
