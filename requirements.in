@@ -1,0 +1,12 @@
+fastapi
+fitz
+numpy
+opencv_python
+pdf2image
+Pillow
+protobuf
+pytesseract
+python-dotenv
+reportlab
+streamlit
+tqdm
