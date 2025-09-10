@@ -1,5 +1,4 @@
 fastapi
-fitz
 numpy
 opencv_python
 pdf2image
