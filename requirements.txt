@@ -14,4 +14,4 @@ python-dotenv
 google-generativeai
 pytesseract
 opencv-python-headless
-pillow
+
