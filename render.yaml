@@ -2,11 +2,9 @@ services:
   - type: web
     name: pdf-summerise-sih
     env: python
-    plan: free  # or starter/professional if you need more power
+    plan: free
     buildCommand: |
-      apt-get update && apt-get install -y tesseract-ocr libtesseract-dev libgl1
-      pip install --no-cache-dir -r requirements.txt
-    startCommand: uvicorn fastapi_app:app --host 0.0.0.0 --port $PORT
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.11
+      apt-get update && apt-get install -y tesseract-ocr libtesseract-dev
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
