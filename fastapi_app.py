@@ -2,6 +2,7 @@
 
 import os
 import tempfile
+import traceback
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
 
@@ -24,8 +25,11 @@ async def summarize_pdf(file: UploadFile = File(...)):
     """
     Upload a PDF file and receive a summarized PDF in return.
     """
-    if not file.filename.endswith(".pdf"):
+    if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are supported.")
+
+    tmp_input_path = None
+    tmp_output_path = None
 
     try:
         # Save the uploaded file to a temporary location
@@ -39,6 +43,9 @@ async def summarize_pdf(file: UploadFile = File(...)):
         # Run your summarization pipeline
         run(tmp_input_path, tmp_output_path)
 
+        if not os.path.exists(tmp_output_path):
+            raise HTTPException(status_code=500, detail="Summarization failed: output file not created.")
+
         # Return summarized file
         return FileResponse(
             path=tmp_output_path,
@@ -47,9 +54,13 @@ async def summarize_pdf(file: UploadFile = File(...)):
         )
 
     except Exception as e:
+        # Log the full traceback to console / Render logs
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
 
     finally:
-        # Clean up uploaded file
-        if os.path.exists(tmp_input_path):
+        # Clean up temporary files
+        if tmp_input_path and os.path.exists(tmp_input_path):
             os.remove(tmp_input_path)
+        if tmp_output_path and os.path.exists(tmp_output_path):
+            os.remove(tmp_output_path)
