@@ -3,7 +3,7 @@ services:
     name: pdf-summerise-sih
     env: python
     plan: free
-    runtime: python-3.10
+    runtime: python-3.11.0
     buildCommand: |
       # Update package lists
       apt-get update
