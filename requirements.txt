@@ -13,5 +13,5 @@ odfpy
 python-dotenv
 google-generativeai
 pytesseract
-cv2
+opencv-python-headless
 pillow
